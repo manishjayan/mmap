@@ -5,7 +5,11 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 
+
 const app = express();
+//aws setup
+
+//file upload
 
 // Passport Config
 require('./config/passport')(passport);
@@ -56,6 +60,7 @@ app.use(function(req, res, next) {
 // Routes
 app.use('/', require('./routes/index.js'));
 app.use('/users', require('./routes/users.js'));
+app.use('/file',require('./routes/file-upload.js'));
 
 const PORT = process.env.PORT || 5000;
 
