@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const aws = require('aws-sdk')
+
 // Load User model
 const User = require('../models/User');
 const { forwardAuthenticated } = require('../config/auth');
@@ -14,10 +16,10 @@ router.get('/register', forwardAuthenticated, (req, res) => res.render('register
 
 // Register
 router.post('/register', (req, res) => {
-  const { name, email, password, password2 } = req.body;
+  const { name, email, password, password2, bucketname } = req.body;
   let errors = [];
 
-  if (!name || !email || !password || !password2) {
+  if (!name || !email || !password || !password2 || !bucketname ) {
     errors.push({ msg: 'Please enter all fields' });
   }
 
@@ -35,7 +37,8 @@ router.post('/register', (req, res) => {
       name,
       email,
       password,
-      password2
+      password2,
+      bucketname
     });
   } else {
     User.findOne({ email: email }).then(user => {
@@ -46,13 +49,40 @@ router.post('/register', (req, res) => {
           name,
           email,
           password,
-          password2
+          password2,
+          bucketname
         });
       } else {
         const newUser = new User({
           name,
           email,
-          password
+          password,
+          bucketname
+        });
+        
+        // Set the region 
+        aws.config.update({
+          secretAccessKey: 'y+rHKynzC9HLTymyAqeVBA8YTCSosMxVOzhvfxab',
+          accessKeyId: 'AKIAIL3ERQI6GKJM6DXQ',
+          region: 'us-east-2'
+      })
+
+        // Create S3 service object
+        const s3 = new aws.S3();
+
+        // Create the parameters for calling createBucket
+        const bucketParams = {
+          Bucket : newUser.bucketname,
+          ACL : 'public-read'
+        };
+
+        // call S3 to create the bucket
+        s3.createBucket(bucketParams, function(err, data) {
+          if (err) {
+            console.log("Error", err);
+          } else {
+            console.log("Success", data.Location);
+          }
         });
 
         bcrypt.genSalt(10, (err, salt) => {

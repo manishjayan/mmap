@@ -4,7 +4,7 @@ const router = express.Router();
 const upload = require('../services/file-upload');
 
 const singleUpload = upload.single('image');
-
+//upload requests
 router.get('/upload', (req, res) => res.render('upload'));
 
 router.post('/upload', function(req, res) {

@@ -7,9 +7,6 @@ const session = require('express-session');
 
 
 const app = express();
-//aws setup
-
-//file upload
 
 // Passport Config
 require('./config/passport')(passport);
