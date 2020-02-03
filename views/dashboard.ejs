@@ -1,11 +1,9 @@
 <h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome <%= user.bucketname %></p>
-<a href="/file/upload" class="btn btn-secondary">UPLOAD</a>
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
-<h1 class="mt-4">Upload</h1>
+<p class="lead mb-3">Welcome <%= user.name %></p>
 <div class="row mt-5">
   <div class="col-md-6 m-auto">
     <div class="card card-body">
+      <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>Upload</h1>
       <form action="/file/upload" enctype="multipart/form-data" method="POST">
         <div class="form-group">
           File :
@@ -18,7 +16,7 @@
         <button type="submit" class="btn btn-primary btn-block">Upload</button>
       </form>
       <p class="lead mt-4">
-        Go back? <a href="/users/login">login</a>
+        <a href="/users/logout" class="btn btn-secondary">Logout</a>
       </p>
     </div>
   </div>

@@ -3,6 +3,12 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const aws = require('aws-sdk')
+const awskey = require('../config/aws.json')
+aws.config.update({
+  secretAccessKey: awskey.secretAccessKey,
+  accessKeyId: awskey.accessKeyId,
+  region: awskey.region
+})
 
 // Load User model
 const User = require('../models/User');
@@ -59,13 +65,6 @@ router.post('/register', (req, res) => {
           password,
           bucketname
         });
-        
-        // Set the region 
-        aws.config.update({
-          secretAccessKey: 'y+rHKynzC9HLTymyAqeVBA8YTCSosMxVOzhvfxab',
-          accessKeyId: 'AKIAIL3ERQI6GKJM6DXQ',
-          region: 'us-east-2'
-      })
 
         // Create S3 service object
         const s3 = new aws.S3();
