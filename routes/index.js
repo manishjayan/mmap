@@ -21,8 +21,8 @@ router.get('/dashboard', ensureAuthenticated,(req, res) => {
     Bucket: req.user.bucketname,
    };
    const end = null;
-   const imgkeys = s3.listObjects(params, function(err, data) {
-     const keys=[];
+   const keys=[];
+   s3.listObjects(params, function(err, data) {
      if (err) console.log(err, err.stack); // an error occurred
      else{ 
         for (var i = 0; i < data.Contents.length; i++) {
@@ -33,13 +33,13 @@ router.get('/dashboard', ensureAuthenticated,(req, res) => {
             break;   // break the loop if end arrived
          }    //See above code for the structure of data.Contents
         }
-      return keys;
+        req.keys=keys;
       }
    });
    res.render('dashboard', {
-    keys: imgkeys
+    User: req.user,
+    picid: req.keys
   })
-  console.log(imgkeys);
 });
 
 module.exports = router;
