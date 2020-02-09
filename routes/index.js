@@ -28,17 +28,18 @@ router.get('/dashboard', ensureAuthenticated,(req, res) => {
         for (var i = 0; i < data.Contents.length; i++) {
           const key = data.Contents[i].Key;
           if (key.substring(0, 19) != end) {
-            keys.push(key);
+            keys=key;
          } else {
             break;   // break the loop if end arrived
          }    //See above code for the structure of data.Contents
         }
         req.keys=keys;
+        console.log(req.keys);
       }
    });
    res.render('dashboard', {
-    User: req.user,
-    picid: req.keys
+    key: req.keys,
+    User: req.user
   })
 });
 
