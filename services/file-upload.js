@@ -2,6 +2,7 @@ const aws = require('aws-sdk')
 const multer = require('multer')
 const multerS3 = require('multer-s3')
 const awskey = require('../config/aws.json')
+const fs = require('fs')
 
 aws.config.update({
   secretAccessKey: awskey.secretAccessKey,
@@ -17,7 +18,7 @@ const getUploadObj = function(bucketname){
     storage: multerS3({
       s3: s3,
       bucket: bucketname,
-      contentType: multerS3.AUTO_CONTENT_TYPE,
+      ACL:'public-read-write',
       metadata: function (req, file, cb) {
         cb(null, {fieldName: "Test"});
       },

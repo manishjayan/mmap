@@ -16,6 +16,7 @@ router.post('/upload', function(req, res) {
       return res.status(422).send({errors: [{title: 'File Upload Error', detail: err.message}] });
     }
   });
+  res.redirect('/')
 });
 
 

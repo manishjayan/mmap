@@ -1,7 +1,13 @@
 <h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome <%= key %>
-</p>
-
+<p class="lead mb-3">Welcome <%= User.name %>
+<ul class="list-unstyled">
+    <% key.map((pic) => {
+      %>
+        <li><img src="<%=pic%>" width="500" height="300" class="img-thumbnail" alt="no image"></li>
+        <br>
+      <%
+    }) %>
+  </ul>
 <div class="row mt-5">
   <div class="col-md-6 m-auto">
     <div class="card card-body">
@@ -23,4 +29,4 @@
     </div>
   </div>
 </div>
-
+</p>

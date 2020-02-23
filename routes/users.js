@@ -68,11 +68,11 @@ router.post('/register', (req, res) => {
 
         // Create S3 service object
         const s3 = new aws.S3();
-
+        
         // Create the parameters for calling createBucket
         const bucketParams = {
           Bucket : newUser.bucketname,
-          ACL : 'public-read'
+          ACL : 'public-read-write'
         };
 
         // call S3 to create the bucket
