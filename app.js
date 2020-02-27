@@ -58,7 +58,7 @@ app.use(function(req, res, next) {
 app.use('/', require('./routes/index.js'));
 app.use('/users', require('./routes/users.js'));
 app.use('/file',require('./routes/file-upload.js'));
-
+console.log("hloooo");
 const PORT = process.env.PORT || 2000;
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
