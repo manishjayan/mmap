@@ -53,7 +53,7 @@ app.use(function(req, res, next) {
   res.locals.error = req.flash('error');
   next();
 });
-
+console.log("nothing imp");
 // Routes
 app.use('/', require('./routes/index.js'));
 app.use('/users', require('./routes/users.js'));
