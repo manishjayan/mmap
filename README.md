@@ -21,3 +21,8 @@ Open "config/keys.js" and add your MongoDB URI, local or Atlas
 ### AWS config file
 
 Open "config/aws.json" and add your aws keys
+
+.
+├── mmap                                    
+├── socialms
+└── comp
