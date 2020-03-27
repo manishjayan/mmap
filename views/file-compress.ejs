@@ -1,0 +1,27 @@
+<h1 class="mt-4">Compress</h1>
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <form action="/file-compress"  method="POST">
+        <div class="form-group">
+          <label for="email">Bucket name</label>
+          <input
+            type="text"
+            name="bucketname"
+            class="form-control"
+          />
+          <label for="email">file name</label>
+          <input
+            type="text"
+            name="filename"
+            class="form-control"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">compress</button>
+      </form>
+      <p class="lead mt-4">
+        <a href="/">Go Back?</a>
+      </p>
+    </div>
+  </div>
+</div>

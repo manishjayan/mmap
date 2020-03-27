@@ -12,7 +12,6 @@ aws.config.update({
 
 
 const s3 = new aws.S3();
-
 const getUploadObj = function(bucketname){        
   return multer({
     storage: multerS3({
@@ -23,7 +22,7 @@ const getUploadObj = function(bucketname){
         cb(null, {fieldName: "Test"});
       },
       key: function (req, file, cb) {
-        cb(null, Date.now().toString()+".jpg");
+        cb(null,Date.now().toString()+".jpg");
       }
     })
   })
