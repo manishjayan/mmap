@@ -22,7 +22,8 @@ Open "config/keys.js" and add your MongoDB URI, local or Atlas
 
 Open "config/aws.json" and add your aws keys
 
+### Whole project file structure
     .
-    ├── mmap                                    
-    ├── socialms
-    └── comp
+    ├── mmap(https://github.com/manishjayan-gcek/mmap)                                    
+    ├── socialms(https://github.com/manishjayan-gcek/socialms)
+    └── comp(https://github.com/ashwinsureshthomas123/comp)
