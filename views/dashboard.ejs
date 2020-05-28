@@ -1,13 +1,16 @@
 <h1 class="mt-4">Dashboard</h1>
 <p class="lead mb-3">Welcome <%= User.name %>
-<ul class="list-unstyled">
-    <% key.map((pic) => {
-      %>
-        <li><img src="<%=pic%>" width="500" height="300" class="img-thumbnail" alt="no image"></li>
-        <br>
-      <%
-    }) %>
-  </ul>
+<form action="/file-compress" method="POST">
+    <ul class="list-unstyled">
+        <% key.map((pic) => {
+          %>
+          <li><input name ="image" type="radio" value="<%=pic%>"><img src="<%=pic%>" width="500" height="300" class="img-thumbnail" alt="no image"></li>
+            <br>
+          <%
+        }) %>
+      </ul>
+      <button type="submit" class="btn btn-secondary">Compress</button>
+</form>
 <div class="row mt-5">
   <div class="col-md-6 m-auto">
     <div class="card card-body">
@@ -25,7 +28,7 @@
       </form>
       <p class="lead mt-4">
         <a href="/users/logout" class="btn btn-secondary">Logout</a>
-        <a href="/file-compress" class="btn btn-secondary">Compress</a>
+        
       </p>
     </div>
   </div>
