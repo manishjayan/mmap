@@ -9,6 +9,7 @@ router.get('/', (req, res) => res.render('file-compress'));
 
 router.post('/',(req, res) => {
   const { bucketname, filename } = req.body;
+  
   const pythonProcess = spawn('python',["../comp/app.py",bucketname,filename]);
   pythonProcess.stdout.on('data', function(data) {
     console.log(data.toString());
