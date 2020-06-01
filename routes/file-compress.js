@@ -4,10 +4,6 @@ const router = express.Router();
 
 const spawn = require("child_process").spawn;
 
-const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
-
-router.get('/',ensureAuthenticated,(req, res) => res.render('file-compress'));
-
 router.post('/',(req, res) => {
   const filelink = req.body.image;
   var filelist=filelink.split(".com/")
