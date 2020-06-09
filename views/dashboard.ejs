@@ -1,6 +1,6 @@
 <h1 class="mt-4">Dashboard</h1>
 <p class="lead mb-3">Welcome <%= User.name %>
-<form action="/file-compress" method="POST">
+<form action="/api/select" method="POST">
     <ul class="list-unstyled">
         <% key.map((pic) => {
           %>
@@ -9,7 +9,7 @@
           <%
         }) %>
       </ul>
-      <button type="submit" class="btn btn-secondary">Compress</button>
+      <button type="submit" class="btn btn-secondary">POST</button>
 </form>
 <div class="row mt-5">
   <div class="col-md-6 m-auto">
@@ -28,7 +28,7 @@
       </form>
       <p class="lead mt-4">
         <a href="/users/logout" class="btn btn-secondary">Logout</a>
-        
+        <a href="/file-compress" class="btn btn-secondary">Compress</a>
       </p>
     </div>
   </div>

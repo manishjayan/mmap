@@ -2,18 +2,17 @@
 <div class="row mt-5">
   <div class="col-md-6 m-auto">
     <div class="card card-body">
-      <form action="/file-compress"  method="POST">
-        <div class="form-group">
-          
-          <label for="email">file name</label>
-          <input
-            type="text"
-            name="filename"
-            class="form-control"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">compress</button>
-      </form>
+      <form action="/file-compress" method="POST">
+        <ul class="list-unstyled">
+            <% key.map((pic) => {
+              %>
+              <li><input name ="image" type="radio" value="<%=pic%>"><img src="<%=pic%>" width="500" height="300" class="img-thumbnail" alt="no image"></li>
+                <br>
+              <%
+            }) %>
+          </ul>
+          <button type="submit" class="btn btn-secondary">Compress</button>
+    </form>
       <p class="lead mt-4">
         <a href="/">Go Back?</a>
       </p>
